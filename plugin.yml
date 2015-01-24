@@ -1,0 +1,21 @@
+name: CursedPotato
+author: LilCrispy2o9/Angelo Vidrio
+description: Player goes invisible when eats potato!
+version: 1.0.0
+main: CursedPotato\Main
+api: [1.10.0]
+permissions:
+    cursedpotato:
+        default: op
+        description: "Main cursedpotato permission"
+        children:
+            cursedpotato.access:
+                default: op
+                description: "Allow the usage CursedPotato"
+                children:
+                    cursedpotato.access.pvp:
+                        default: op
+                        description: "Player can PvP while cursed"
+                    cursedpotato.access.pvp:
+                        default: op
+                        description: "Player can PvP while cursed"
