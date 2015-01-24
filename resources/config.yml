@@ -1,0 +1,11 @@
+---
+Enabled: true
+#################
+#Set to false to disable
+#################
+Time: 30
+#################
+#Time of invisibility
+#################
+...
+
