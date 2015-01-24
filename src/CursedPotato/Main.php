@@ -7,6 +7,7 @@ namespace CursedPotato;
 use pocketmine\Server;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerItemConsumeEvent;
+use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\Player;
 use pocketmine\IPlayer;
 use pocketmine\utils\TextFormat;
@@ -49,11 +50,22 @@ class Main extends PluginBase  implements Listener {
 			return true;
 		}
 	}
+	
+	public function onQuit(PlayerQuitEvent $ev) {
+		if(isset($this->sessions[$ev->getPlayer()->getName()])) {
+			unset($this->sessions[$ev->getPlayer()->getName()]);
+			return true;
+		}else{
+			return true;
+		}
+	}
+	
 	public function hideUser($user) {
 		foreach($user->getLevel()->getPlayers() as $p) {
 			$p->hidePlayer($user);
 		}
 	}
+	
 	public function showUser($user) {
 		foreach($user->getLevel()->getPlayers() as $p) {
 			$p->showPlayer($user);
