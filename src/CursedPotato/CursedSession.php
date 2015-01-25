@@ -22,13 +22,10 @@ class CursedSession extends PluginTask{
         $this->plugin = $plugin;
     }
 	
-	public function setCurse(Player $player) {
+	public function setCurse() {
 		$this->state = 1;
 	}
 	
-	public function isCurse(Player $player) {
-		return $this->state === 1;
-	}
 	
 	public function onRun($currentTick) {
 		return true;
