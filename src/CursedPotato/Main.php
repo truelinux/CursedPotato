@@ -23,7 +23,6 @@ class Main extends PluginBase  implements Listener {
 		$this->saveDefaultConfig();
 		$this->reloadConfig();
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-		$time = intval($this->getConfig()->get("Time") * 20);
 		$this->getLogger()->info( TextFormat::GREEN . "CursedPotato - Enabled!" );
 	}
 	
@@ -36,8 +35,7 @@ class Main extends PluginBase  implements Listener {
 			if(!isset($this->sessions[$player->getName()])) {
 				$this->sessions[$player->getName()] = new CursedSession($this);
 				$this->sessions[$player->getName()]->setCurse($player);
-				$time = $this->getConfig()->get("Time") * 20;
-				$sec = $this->getConfig()->get("Time");
+				$time = $sec * 20;
 				$player->sendMessage("Your cursed! Invisible for $sec seconds!");
 				$this->hideUser($player);
 				$this->getServer()->getScheduler()->scheduleDelayedTask(new VanishTask($this, $player), $time);
@@ -46,8 +44,6 @@ class Main extends PluginBase  implements Listener {
 				$player->sendMessage("Your already cursed!");
 				return true;
 			}
-		}else{
-			return true;
 		}
 	}
 	
@@ -55,14 +51,13 @@ class Main extends PluginBase  implements Listener {
 		if(isset($this->sessions[$ev->getPlayer()->getName()])) {
 			unset($this->sessions[$ev->getPlayer()->getName()]);
 			return true;
-		}else{
-			return true;
 		}
 	}
 	
 	public function hideUser($user) {
 		foreach($user->getLevel()->getPlayers() as $p) {
 			$p->hidePlayer($user);
+			return true;
 		}
 	}
 	
