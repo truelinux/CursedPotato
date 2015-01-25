@@ -34,7 +34,7 @@ class Main extends PluginBase  implements Listener {
 		if($food == "Potato" &&  $player->hasPermission("cursedpotato.access") && $this->getConfig()->get("Enabled")) {
 			if(!isset($this->sessions[$player->getName()])) {
 				$this->sessions[$player->getName()] = new CursedSession($this);
-				$this->sessions[$player->getName()]->setCurse($player);
+				$this->sessions[$player->getName()]->setCurse();
 				$time = $sec * 20;
 				$player->sendMessage("Your cursed! Invisible for $sec seconds!");
 				$this->hideUser($player);
@@ -44,6 +44,8 @@ class Main extends PluginBase  implements Listener {
 				$player->sendMessage("Your already cursed!");
 				return true;
 			}
+		}else{
+			return true;
 		}
 	}
 	
