@@ -1,5 +1,5 @@
 # CursedPotato
-Eat the wrong potato and your cursed!
+Eat the wrong potato and you're cursed!
 
 Permissions:
 
