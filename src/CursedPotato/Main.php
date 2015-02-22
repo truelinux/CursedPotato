@@ -36,12 +36,12 @@ class Main extends PluginBase  implements Listener {
 				$this->sessions[$player->getName()] = new CursedSession($this);
 				$this->sessions[$player->getName()]->setCurse();
 				$time = $sec * 20;
-				$player->sendMessage("Your cursed! Invisible for $sec seconds!");
+				$player->sendMessage("You are cursed! Invisiblity for $sec seconds!");
 				$this->hideUser($player);
 				$this->getServer()->getScheduler()->scheduleDelayedTask(new VanishTask($this, $player), $time);
 				return true;
 			}else{
-				$player->sendMessage("Your already cursed!");
+				$player->sendMessage("You are already cursed!");
 				return true;
 			}
 		}else{
@@ -66,7 +66,7 @@ class Main extends PluginBase  implements Listener {
 	public function showUser($user) {
 		foreach($user->getLevel()->getPlayers() as $p) {
 			$p->showPlayer($user);
-			$user->sendMessage("Curse has worn off!");
+			$user->sendMessage("The curse has worn off!");
 			return true;
 		}
 	}
