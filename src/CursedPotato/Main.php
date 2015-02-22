@@ -36,7 +36,7 @@ class Main extends PluginBase  implements Listener {
 				$this->sessions[$player->getName()] = new CursedSession($this);
 				$this->sessions[$player->getName()]->setCurse();
 				$time = $sec * 20;
-				$player->sendMessage("You are cursed! Invisible for $sec seconds!");
+				$player->sendMessage("You are cursed! Invisiblity for $sec seconds!");
 				$this->hideUser($player);
 				$this->getServer()->getScheduler()->scheduleDelayedTask(new VanishTask($this, $player), $time);
 				return true;
